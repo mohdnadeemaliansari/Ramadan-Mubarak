@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Blessings</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- PDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Ramadan Mubarak Popup -->
+    <div id="ramadanPopup" class="ramadan-popup">
+        <div class="popup-content">
+            <h2>🌙 Ramadan Mubarak 🌙</h2>
+            <p><b>Ramadan Mubarak from Ansari Family</b></p>
+            <p>May Allah bless you with peace, happiness, and barakah. Ameen 🤲</p>
+
+            <button class="btn btn-islamic mt-3" onclick="closePopup()">
+                <i class="fas fa-times"></i> Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1><i class="fas fa-moon"></i> Welcome to Ramadan <i class="fas fa-moon"></i></h1>
+            <p>A month of fasting, prayer, and spiritual reflection. May Allah bless you abundantly.</p>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-star-and-crescent"></i> Ramadan Blessings</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dua-success"><i class="fas fa-star"></i> Duas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#timings"><i class="fas fa-clock"></i> Timings</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits"><i class="fas fa-heartbeat"></i> Benefits</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prayers"><i class="fas fa-pray"></i> Prayers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Countdown Section TOP -->
+    <section class="container my-4">
+        <div class="countdown-box">
+            <h3><i class="fas fa-hourglass-half"></i> Sehri / Iftar Countdown</h3>
+            <p id="countdown-timer">Loading...</p>
+
+            <button class="btn btn-islamic mt-2" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+
+            <button class="btn btn-islamic mt-2 ms-2" onclick="downloadCalendar()">
+                <i class="fas fa-download"></i> Download Calendar PDF
+            </button>
+        </div>
+    </section>
+
+    <!-- Ramadan Duas Section -->
+    <section id="dua-success" class="container my-5">
+        <h2><i class="fas fa-star"></i> Ramadan Duas (With Audio)</h2>
+        <p>Click on Play button to listen to Duas.</p>
+
+        <!-- Dua for Success -->
+        <div class="card p-4 shadow mb-3">
+            <h4>Dua for Success</h4>
+            <p><strong>Arabic:</strong> رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي</p>
+            <p><strong>English Translation:</strong> "My Lord, expand for me my chest and ease for me my task."</p>
+
+            <audio id="audio-success">
+                <source src="dua-success.mp3" type="audio/mpeg">
+            </audio>
+
+            <button class="btn btn-islamic mt-2" onclick="playDua('audio-success')">
+                <i class="fas fa-play"></i> Play Dua
+            </button>
+        </div>
+
+        <!-- Dua for Sehri -->
+        <div class="card p-4 shadow mb-3">
+            <h4>Dua for Sehri</h4>
+            <p><strong>Arabic:</strong> وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</p>
+            <p><strong>English Translation:</strong> "I intend to keep the fast for tomorrow in the month of Ramadan."</p>
+
+            <audio id="audio-sehri">
+                <source src="dua-sehri.mp3" type="audio/mpeg">
+            </audio>
+
+            <button class="btn btn-islamic mt-2" onclick="playDua('audio-sehri')">
+                <i class="fas fa-play"></i> Play Dua
+            </button>
+        </div>
+
+        <!-- Dua for Iftar -->
+        <div class="card p-4 shadow mb-3">
+            <h4>Dua for Iftar</h4>
+            <p><strong>Arabic:</strong> اللَّهُمَّ إِنِّي لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ</p>
+            <p><strong>English Translation:</strong> "O Allah, I fasted for You and I break my fast with Your sustenance."</p>
+
+            <audio id="audio-iftar">
+                <source src="dua-iftar.mp3" type="audio/mpeg">
+            </audio>
+
+            <button class="btn btn-islamic mt-2" onclick="playDua('audio-iftar')">
+                <i class="fas fa-play"></i> Play Dua
+            </button>
+        </div>
+
+        <!-- Dua for Laylatul Qadr -->
+        <div class="card p-4 shadow mb-3">
+            <h4>Dua for Laylatul Qadr</h4>
+            <p><strong>Arabic:</strong> اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي</p>
+            <p><strong>English Translation:</strong> "O Allah, You are Forgiving and love forgiveness, so forgive me."</p>
+
+            <audio id="audio-qadr">
+                <source src="dua-qadr.mp3" type="audio/mpeg">
+            </audio>
+
+            <button class="btn btn-islamic mt-2" onclick="playDua('audio-qadr')">
+                <i class="fas fa-play"></i> Play Dua
+            </button>
+        </div>
+
+    </section>
+
+    <!-- Prayer Timings -->
+    <section id="timings" class="container mt-5">
+        <h2><i class="fas fa-clock"></i> Ramadan Calendar (Sehri & Iftar Timing)</h2>
+
+        <div id="ramadan-calendar" class="mt-4">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Date</th>
+                            <th>Fajr (Sehri End)</th>
+                            <th>Dhuhr</th>
+                            <th>Asr</th>
+                            <th>Maghrib (Iftar Start)</th>
+                            <th>Isha</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr><td>February 19, 2026</td><td>5:00 AM</td><td>12:30 PM</td><td>4:04 PM</td><td>5:56 PM</td><td>7:19 PM</td></tr>
+                        <tr><td>February 20, 2026</td><td>5:00 AM</td><td>12:30 PM</td><td>4:06 PM</td><td>5:56 PM</td><td>7:21 PM</td></tr>
+                        <tr><td>February 21, 2026</td><td>4:59 AM</td><td>12:30 PM</td><td>4:08 PM</td><td>5:57 PM</td><td>7:23 PM</td></tr>
+                        <tr><td>February 22, 2026</td><td>4:59 AM</td><td>12:30 PM</td><td>4:10 PM</td><td>5:57 PM</td><td>7:25 PM</td></tr>
+                        <tr><td>February 23, 2026</td><td>4:58 AM</td><td>12:30 PM</td><td>4:12 PM</td><td>5:58 PM</td><td>7:27 PM</td></tr>
+                        <tr><td>February 24, 2026</td><td>4:58 AM</td><td>12:30 PM</td><td>4:14 PM</td><td>5:58 PM</td><td>7:29 PM</td></tr>
+                        <tr><td>February 25, 2026</td><td>4:57 AM</td><td>12:30 PM</td><td>4:16 PM</td><td>5:59 PM</td><td>7:31 PM</td></tr>
+                        <tr><td>February 26, 2026</td><td>4:57 AM</td><td>12:30 PM</td><td>4:18 PM</td><td>6:00 PM</td><td>7:33 PM</td></tr>
+                        <tr><td>February 27, 2026</td><td>4:56 AM</td><td>12:30 PM</td><td>4:20 PM</td><td>6:00 PM</td><td>7:35 PM</td></tr>
+                        <tr><td>February 28, 2026</td><td>4:56 AM</td><td>12:30 PM</td><td>4:22 PM</td><td>6:01 PM</td><td>7:37 PM</td></tr>
+                        <tr><td>March 1, 2026</td><td>4:55 AM</td><td>12:30 PM</td><td>4:24 PM</td><td>6:01 PM</td><td>7:39 PM</td></tr>
+                        <tr><td>March 2, 2026</td><td>4:55 AM</td><td>12:30 PM</td><td>4:26 PM</td><td>6:02 PM</td><td>7:41 PM</td></tr>
+                        <tr><td>March 3, 2026</td><td>4:54 AM</td><td>12:30 PM</td><td>4:28 PM</td><td>6:03 PM</td><td>7:43 PM</td></tr>
+                        <tr><td>March 4, 2026</td><td>4:54 AM</td><td>12:30 PM</td><td>4:30 PM</td><td>6:03 PM</td><td>7:45 PM</td></tr>
+                        <tr><td>March 5, 2026</td><td>4:54 AM</td><td>12:30 PM</td><td>4:32 PM</td><td>6:04 PM</td><td>7:47 PM</td></tr>
+                        <tr><td>March 6, 2026</td><td>4:54 AM</td><td>12:30 PM</td><td>4:34 PM</td><td>6:04 PM</td><td>7:49 PM</td></tr>
+                        <tr><td>March 7, 2026</td><td>4:53 AM</td><td>12:30 PM</td><td>4:36 PM</td><td>6:05 PM</td><td>7:51 PM</td></tr>
+                        <tr><td>March 8, 2026</td><td>4:53 AM</td><td>12:30 PM</td><td>4:38 PM</td><td>6:05 PM</td><td>7:53 PM</td></tr>
+                        <tr><td>March 9, 2026</td><td>4:52 AM</td><td>12:30 PM</td><td>4:40 PM</td><td>6:06 PM</td><td>7:55 PM</td></tr>
+                        <tr><td>March 10, 2026</td><td>4:51 AM</td><td>12:30 PM</td><td>4:42 PM</td><td>6:06 PM</td><td>7:57 PM</td></tr>
+                        <tr><td>March 11, 2026</td><td>4:51 AM</td><td>12:30 PM</td><td>4:44 PM</td><td>6:07 PM</td><td>7:59 PM</td></tr>
+                        <tr><td>March 12, 2026</td><td>4:50 AM</td><td>12:30 PM</td><td>4:46 PM</td><td>6:07 PM</td><td>8:01 PM</td></tr>
+                        <tr><td>March 13, 2026</td><td>4:49 AM</td><td>12:30 PM</td><td>4:48 PM</td><td>6:07 PM</td><td>8:03 PM</td></tr>
+                        <tr><td>March 14, 2026</td><td>4:48 AM</td><td>12:30 PM</td><td>4:50 PM</td><td>6:08 PM</td><td>8:05 PM</td></tr>
+                        <tr><td>March 15, 2026</td><td>4:48 AM</td><td>12:30 PM</td><td>4:52 PM</td><td>6:08 PM</td><td>8:07 PM</td></tr>
+                        <tr><td>March 16, 2026</td><td>4:46 AM</td><td>12:30 PM</td><td>4:54 PM</td><td>6:09 PM</td><td>8:09 PM</td></tr>
+                        <tr><td>March 17, 2026</td><td>4:45 AM</td><td>12:30 PM</td><td>4:56 PM</td><td>6:10 PM</td><td>8:11 PM</td></tr>
+                        <tr><td>March 18, 2026</td><td>4:44 AM</td><td>12:30 PM</td><td>4:58 PM</td><td>6:10 PM</td><td>8:13 PM</td></tr>
+                        <tr><td>March 19, 2026</td><td>4:43 AM</td><td>12:30 PM</td><td>5:00 PM</td><td>6:11 PM</td><td>8:15 PM</td></tr>
+                        <tr><td>March 20, 2026</td><td>4:42 AM</td><td>12:30 PM</td><td>5:02 PM</td><td>6:11 PM</td><td>8:17 PM</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <main class="container my-5">
+
+        <!-- About Ramadan -->
+        <section id="about">
+            <h2><i class="fas fa-book-open"></i> About Ramadan</h2>
+
+            <p>
+                Ramadan is the ninth and one of the most sacred months of the Islamic calendar. It is a month of fasting, prayer,
+                self-discipline, and spiritual purification. Muslims around the world observe fasting from dawn (Sehri) until sunset (Iftar).
+            </p>
+
+            <p>
+                Ramadan is special because the Holy Quran was revealed during this blessed month. It is a time when Muslims increase
+                their worship, recite the Quran, perform Taraweeh prayers, and seek forgiveness from Allah.
+            </p>
+
+            <p>
+                Fasting in Ramadan is one of the Five Pillars of Islam and teaches patience, gratitude, and compassion for the poor and needy.
+                Muslims also give charity (Zakat and Sadaqah) to help those in need.
+            </p>
+
+            <div class="alert alert-success mt-4">
+                <b>Ramadan Message:</b> This month reminds us to control our desires, improve our character, and strengthen our connection with Allah.
+                May Allah accept our fasts and prayers. Ameen 🤲
+            </div>
+        </section>
+
+        <!-- Scientific Benefits Section -->
+        <section id="benefits" class="mt-5">
+            <h2><i class="fas fa-heartbeat"></i> Scientific Benefits of Ramadan Fasting</h2>
+
+            <p>
+                Ramadan fasting is not only a spiritual worship, but modern science also proves that fasting has many health
+                benefits for the human body. It helps in improving physical, mental, and emotional well-being.
+            </p>
+
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow p-4 benefit-card">
+                        <h4><i class="fas fa-fire text-success"></i> Improves Metabolism</h4>
+                        <p>Fasting helps balance insulin levels and improves metabolism which supports better energy use.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow p-4 benefit-card">
+                        <h4><i class="fas fa-weight-scale text-success"></i> Helps in Weight Loss</h4>
+                        <p>During fasting, the body burns stored fat for energy which supports healthy weight management.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow p-4 benefit-card">
+                        <h4><i class="fas fa-leaf text-success"></i> Detoxifies the Body</h4>
+                        <p>Fasting gives rest to the digestive system and helps the body remove toxins naturally.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow p-4 benefit-card">
+                        <h4><i class="fas fa-heart text-success"></i> Improves Heart Health</h4>
+                        <p>Studies show fasting can reduce bad cholesterol (LDL) and improve heart health.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-4">
+                <strong>Conclusion:</strong> Ramadan fasting is a perfect combination of <b>spiritual purification</b> and
+                <b>scientific health benefits</b>.
+            </div>
+        </section>
+
+        <!-- Daily Prayers -->
+        <section id="prayers" class="mt-5">
+            <h2><i class="fas fa-pray"></i> Daily Prayers & Good Deeds</h2>
+
+            <ul class="list-group">
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Pray 5 times daily (Salah)</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Recite Quran daily</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Perform Taraweeh prayers</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Give charity (Sadaqah)</li>
+            </ul>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="mt-5 mb-5">
+            <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card shadow p-4">
+                        <h4><i class="fas fa-mosque"></i> Mosque Information</h4>
+                        <p><strong>Mosque Name:</strong> Jamia Masjid</p>
+                        <p><strong>Location:</strong> Siddharth Nagar, India</p>
+                        <p><strong>Phone:</strong> +91 9984017532</p>
+                        <p><strong>Email:</strong> mr7213139@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="card shadow p-4">
+                        <h4><i class="fas fa-paper-plane"></i> Send Message</h4>
+
+                        <!-- FORM SUBMIT -->
+                        <form action="https://formsubmit.co/mr7213139@gmail.com" method="POST">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="thankyou.html">
+
+                            <div class="mb-3">
+                                <label class="form-label">Your Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Your Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea name="message" class="form-control" rows="4" placeholder="Write your message..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-paper-plane"></i> Send
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center p-3">
+        <p class="mb-0">© 2026 Ramadan Blessings | Made with ❤️ for Muslims</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
