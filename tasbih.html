@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasbih Counter</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-star-and-crescent"></i> Ramadan Blessings
+            </a>
+        </div>
+    </nav>
+
+    <!-- Tasbih Section -->
+    <section class="container my-5">
+        <h2><i class="fas fa-praying-hands"></i> Tasbih Counter (तस्बीह काउंटर)</h2>
+
+        <p>
+            Use this digital tasbih counter to recite zikr daily. Select any tasbih and start counting.
+        </p>
+
+        <p>
+            इस डिजिटल तस्बीह काउंटर का उपयोग करके रोज़ाना ज़िक्र करें। नीचे से कोई भी तस्बीह चुनें और गिनती शुरू करें।
+        </p>
+
+        <div class="tasbih-box shadow">
+
+            <label for="tasbihSelect" class="form-label mb-2"><h3 class="mb-3">Select Tasbih (तस्बीह चुनें)</h3></label>
+
+            <select class="form-select mb-3" id="tasbihSelect" onchange="changeTasbih()">
+                <option value="SubhanAllah">SubhanAllah (سُبْحَانَ ٱللَّٰه)</option>
+                <option value="Alhamdulillah">Alhamdulillah (ٱلْحَمْدُ لِلَّٰه)</option>
+                <option value="AllahuAkbar">Allahu Akbar (ٱللَّٰهُ أَكْبَر)</option>
+                <option value="Astaghfirullah">Astaghfirullah (أَسْتَغْفِرُ ٱللَّٰه)</option>
+                <option value="LaIlahaIllallah">La ilaha illallah (لَا إِلٰهَ إِلَّا ٱللَّٰه)</option>
+                <option value="DuroodSharif">Durood Sharif (اللَّهُمَّ صَلِّ عَلَى مُحَمَّد)</option>
+                <option value="Hasbunallah">Hasbunallahu wa ni’mal wakeel (حَسْبُنَا ٱللَّٰهُ وَنِعْمَ ٱلْوَكِيل)</option>
+                <option value="SubhanWabihamdihi">SubhanAllahi wa bihamdihi (سُبْحَانَ ٱللَّٰهِ وَبِحَمْدِهِ)</option>
+                <option value="Custom">Custom Tasbih (अपनी तस्बीह लिखें)</option>
+            </select>
+
+            <input type="text" class="form-control mb-3" id="customTasbihInput"
+                placeholder="Enter your custom tasbih..." onkeyup="updateCustomTasbih()">
+
+            <h4 id="tasbihName" class="text-success fw-bold">SubhanAllah (سُبْحَانَ ٱللَّٰه)</h4>
+
+            <div class="tasbih-count" id="tasbihCount">0</div>
+
+            <div class="tasbih-buttons d-flex justify-content-center gap-3 flex-wrap">
+                <button class="btn btn-islamic" onclick="increaseCount()">
+                    <i class="fas fa-plus"></i> Count
+                </button>
+
+                <button class="btn btn-danger" onclick="resetCount()">
+                    <i class="fas fa-rotate-left"></i> Reset
+                </button>
+            </div>
+
+            <p class="mt-4 text-muted">
+                Tip: Recite 33 times SubhanAllah, 33 times Alhamdulillah, 34 times Allahu Akbar after prayer.
+            </p>
+
+            <p class="text-muted">
+                सुझाव: नमाज़ के बाद 33 बार सुब्हानल्लाह, 33 बार अल्हम्दुलिल्लाह और 34 बार अल्लाहु अकबर पढ़ें।
+            </p>
+        </div>
+
+        <a href="index.html" class="btn btn-islamic mt-4">
+            <i class="fas fa-home"></i> Back to Home
+        </a>
+    </section>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
